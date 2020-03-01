@@ -20,7 +20,7 @@ app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres@localhost:5432/fyyur'
 # TODO: connect to a local postgresql database
 
 #----------------------------------------------------------------------------#
