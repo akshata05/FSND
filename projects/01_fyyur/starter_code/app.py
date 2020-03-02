@@ -18,7 +18,9 @@ from forms import *
 
 app = Flask(__name__)
 moment = Moment(app)
-app.config.from_object('config')
+#app.config.from_object('config')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:Mercury@123@localhost:5432/fyyur'
 db = SQLAlchemy(app)
 # TODO: connect to a local postgresql database
 
@@ -59,7 +61,7 @@ class Artist(db.Model):
 #----------------------------------------------------------------------------#
 # Filters.
 #----------------------------------------------------------------------------#
-
+db.commit()
 def format_datetime(value, format='medium'):
   date = dateutil.parser.parse(value)
   if format == 'full':
